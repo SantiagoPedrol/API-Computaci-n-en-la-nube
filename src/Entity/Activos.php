@@ -3,23 +3,23 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
-use App\Repository\PreciosHistoricosRepository;
+use App\Repository\ActivosRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PreciosHistoricosRepository::class)]
+#[ORM\Entity(repositoryClass: ActivosRepository::class)]
 #[ApiResource]
-class PreciosHistoricos
+class Activos
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $ticker = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $Alertas = null;
+    private ?string $nombre = null;
 
     public function getId(): ?int
     {
@@ -31,21 +31,21 @@ class PreciosHistoricos
         return $this->ticker;
     }
 
-    public function setTicker(?string $ticker): static
+    public function setTicker(string $ticker): static
     {
         $this->ticker = $ticker;
 
         return $this;
     }
 
-    public function getAlertas(): ?string
+    public function getNombre(): ?string
     {
-        return $this->Alertas;
+        return $this->nombre;
     }
 
-    public function setAlertas(string $Alertas): static
+    public function setNombre(string $nombre): static
     {
-        $this->Alertas = $Alertas;
+        $this->nombre = $nombre;
 
         return $this;
     }
